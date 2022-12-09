@@ -1,0 +1,100 @@
+.taskContainer {
+  background-color: var(--gray-500);
+  padding: 1rem;
+  border-radius: 8px;
+  border: 1px solid var(--gray-400);
+  box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.06);
+  display: flex;
+  gap: 0.75rem;
+  align-items: flex-start;
+}
+
+.checkContainer {
+  width: 1.25rem;
+  height: 1.25rem;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+.checkContainer input[type="checkbox"] {
+  appearance: none;
+  width: 100%;
+  height: 100%;
+  border: 2px solid var(--blue);
+  border-radius: 50%;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.checkContainer input[type="checkbox"]:hover {
+  background: rgba(30, 111, 159, 20%);
+}
+
+.checkContainer input[type="checkbox"]:checked {
+  border: 2px solid var(--purple-dark);
+  background: var(--purple-dark);
+}
+
+.checkContainer input[type="checkbox"]:checked:hover {
+  border: 2px solid var(--purple);
+  background: var(--purple);
+}
+
+.checkContainer input[type="checkbox"]:checked::before {
+  content: "";
+  display: block;
+  width: 8px;
+  height: 5px;
+  border: 2px solid white;
+  border-top: 0;
+  border-right: 0;
+  transform: rotate(-45deg);
+  position: absolute;
+  top: calc(50% - 0.3125rem);
+  left: calc(50% - 0.3125rem);
+  scale: 0.9;
+}
+
+.taskContainer:has(input[type="checkbox"]:checked) {
+  border-color: var(--gray-500);
+  box-shadow: none;
+}
+
+.checkContainer:has(input[type="checkbox"]:checked) + p {
+  text-decoration: line-through;
+  color: var(--gray-300);
+}
+
+.taskContainer p {
+  flex: 1;
+  font-size: 0.875rem;
+  font-weight: 400;
+  line-height: 1.4;
+  color: var(--gray-100);
+}
+
+.taskContainer button {
+  background: transparent;
+  border: 0;
+  cursor: pointer;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.313rem;
+  border-radius: 3px;
+}
+
+.taskContainer button svg {
+  width: 100%;
+  height: auto;
+  stroke: var(--gray-300);
+  transition: stroke 0.2s ease;
+}
+
+.taskContainer button:hover > svg {
+  stroke: var(--red);
+}
