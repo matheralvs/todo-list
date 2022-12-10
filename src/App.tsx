@@ -61,6 +61,23 @@ export function App() {
     tasksSaveInLocal(taskListWithoutOne);
   }
 
+  function sortByIsChecked(newTasksArray: ITask[]) {
+    const newTasksArraySorted = newTasksArray.sort((a, _b) => {
+      switch (a.isChecked) {
+        case false:
+          return -1;
+          break;
+        case true:
+          return 1;
+          break;
+        default:
+          return 0;
+          break;
+      }
+    });
+    return newTasksArraySorted;
+  }
+
   function handleTasksToChecked(taskId: number) {
     const newTasksChecked = taskList.map((task) => {
       if (task.id === taskId) {
@@ -73,7 +90,7 @@ export function App() {
       }
     });
 
-    tasksSaveInLocal(newTasksChecked);
+    tasksSaveInLocal(sortByIsChecked(newTasksChecked));
   }
 
   const tasksQuantity = taskList.length;
@@ -120,6 +137,7 @@ export function App() {
             return (
               <Task
                 tasks={task}
+                key={task.id}
                 onRemove={handleRemoveTasksToList}
                 onChecked={handleTasksToChecked}
               />

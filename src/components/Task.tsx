@@ -24,7 +24,7 @@ export function Task({ tasks, onRemove, onChecked }: TaskProps) {
         <input
           type="checkbox"
           checked={tasks.isChecked}
-          onClick={handleTaskChecked}
+          onChange={handleTaskChecked}
         />
       </div>
       <p>{tasks.content}</p>
