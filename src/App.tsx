@@ -48,7 +48,7 @@ export function App() {
       isChecked: false,
     };
 
-    tasksSaveInLocal([...taskList, newTask]);
+    tasksSaveInLocal(sortByIsChecked([...taskList, newTask]));
 
     setTaskValue("");
   }
@@ -75,6 +75,7 @@ export function App() {
           break;
       }
     });
+
     return newTasksArraySorted;
   }
 
