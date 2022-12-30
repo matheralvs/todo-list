@@ -13,7 +13,18 @@ export interface ITask {
 
 export function App() {
   const [taskValue, setTaskValue] = useState("");
-  const [taskList, setTaskList] = useState<ITask[]>([]);
+  const [taskList, setTaskList] = useState<ITask[]>([
+    {
+      id: 1,
+      content: "Trabalhar no Design System",
+      isChecked: false,
+    },
+    {
+      id: 2,
+      content: "Fazer deploy das aplicações",
+      isChecked: true,
+    },
+  ]);
 
   useEffect(() => {
     tasksLoadSaveInLocal();
@@ -48,7 +59,7 @@ export function App() {
       isChecked: false,
     };
 
-    tasksSaveInLocal(sortByIsChecked([...taskList, newTask]));
+    tasksSaveInLocal([newTask, ...taskList]);
 
     setTaskValue("");
   }
@@ -112,7 +123,7 @@ export function App() {
         />
 
         <button className={styles.buttonTask} type="submit">
-          Criar <TbCirclePlus size={20} />
+          Criar <TbCirclePlus className={styles.buttonTaskIcon} size={20} />
         </button>
       </form>
 
