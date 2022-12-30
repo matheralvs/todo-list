@@ -1,5 +1,5 @@
 <h1 align="center">
-  <img alt="Ignite Feed" src=".github/ignite-todo.png" width="100%" />
+  <img alt="Todo List" src=".github/ignite-todo.png" width="100%" />
 </h1>
 
 <h3 align="center">
